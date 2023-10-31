@@ -1,0 +1,23 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
+
+
+class MyWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.tax = QLineEdit(self)
+        self.tax.textChanged.connect(self.yazi_degisti)
+        self.label = QLabel(self)
+        self.label.move(100, 100)
+        self.setGeometry(500, 500, 500, 500)
+
+    def yazi_degisti(self):
+        metin = self.tax.text()
+        uzun = len(metin)
+        self.label.setText(f"uzunlik: {uzun}")
+
+
+app = QApplication(sys.argv)
+window = MyWindow()
+window.show()
+sys.exit(app.exec_())
